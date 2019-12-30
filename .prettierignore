@@ -1,0 +1,16 @@
+/node_modules
+/dist
+
+*.ttf
+*.woff
+*.woff2
+
+*.png
+*.svg
+
+*.iml
+*.xml
+
+*.snap
+
+.*ignore

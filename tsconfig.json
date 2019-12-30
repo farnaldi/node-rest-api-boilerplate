@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "dist",
+    "sourceMap": true,
+    "allowJs": true,
+    "declaration": false,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "knexfile.ts",
+    "src/database/migrations/*.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
