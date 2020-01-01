@@ -9,6 +9,7 @@ This is a boilerplate for building scalable and robust REST APIs using Node & Ty
 - [Installation](#installation)
 - [Available Routes](#available-routes)
 - [Available Scripts](#available-scripts)
+- [Contributing] (#contributing)
 - [License](#license)
 
 ## Prerequisites
@@ -57,7 +58,7 @@ This project uses node and npm. Go check them out if you don't have them locally
 
 - `build` - Transpile TypeScript to ES6,
 - `lint` - Lint your TS code,
-- `dev` - To run the app without transpile to ES6,
+- `dev` - Run the app without transpile to ES6
 - `start` - Run the transpiled app
 - `knex:migrate:make` - Create a new migration, it needs the migration name as parameter
 - `knex:migrate:latest` - Apply the latest migrations to the database
@@ -70,4 +71,5 @@ Feel free to dive in! Open an issue or submit PRs.
 Standard Readme follows the [Contributor Covenant](https://www.contributor-covenant.org/version/1/3/0/) Code of Conduct.
 
 ## License
+
 [MIT © farnaldi](https://github.com/farnaldi/node-rest-api-boilerplate/blob/master/LICENSE)
