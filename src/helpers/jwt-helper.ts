@@ -1,6 +1,6 @@
 import * as jwt from 'jsonwebtoken';
 import { JWT_SECRET } from '../config/env';
-import jwtOptions from '../config/jwtOptions';
+import jwtOptions from '../config/jwt-options';
 // eslint-disable-next-line no-unused-vars
 import { JwtPayload } from '../types/jwt-types';
 
