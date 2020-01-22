@@ -1,10 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 import { Request, Response } from 'express';
 import * as httpStatus from 'http-status';
-import { EMAIL_IN_USE, UNAUTHORIZED, INTERNAL_SERVER_ERROR } from '../../../constants/error-constants';
+import { UNAUTHORIZED, INTERNAL_SERVER_ERROR } from '../../../constants/error-constants';
 // eslint-disable-next-line no-unused-vars
 import { ErrorDetail } from '../../../types/error-types';
-import { FindUserByEmail, AddUser } from '../../../database/users/user-functions';
+import { findUserByEmail, addUser } from '../../../database/users/user-functions';
 
 import * as cryptoHelper from '../../../helpers/crypto-helper';
 // eslint-disable-next-line no-unused-vars
@@ -14,7 +14,7 @@ import UserModel from '../../../database/users/user-model';
 import logError from '../../../handlers/log-handler';
 import { createToken } from '../../../helpers/jwt-helper';
 
-import parseError from '../../../helpers/error-helper';
+import { validateNewUser } from '../../../handlers/users-handler';
 
 export const login = async (req: Request, res: Response): Promise<any> => {
     const { email, password } = req.body;
@@ -22,7 +22,7 @@ export const login = async (req: Request, res: Response): Promise<any> => {
     try {
         let matchPasswords = false;
 
-        const user = await FindUserByEmail(email);
+        const user = await findUserByEmail(email);
 
         if (user) {
             matchPasswords = await cryptoHelper.compare(password, user.Password);
@@ -53,23 +53,22 @@ export const login = async (req: Request, res: Response): Promise<any> => {
 export const register = async (req: Request, res: Response): Promise<any> => {
     const { firstName, lastName, email, password } = req.body;
     try {
-        const existingUser = await FindUserByEmail(email);
-
-        if (existingUser) {
-            const errorsDetail: ErrorDetail[] = [parseError('email', EMAIL_IN_USE)];
-            return res.status(httpStatus.UNPROCESSABLE_ENTITY).send({ errorsDetail });
-        }
-        const hash = await cryptoHelper.hash(password);
-
         const user: Partial<UserModel> = {
             FirstName: firstName,
             LastName: lastName,
             Email: email,
-            Password: hash,
             Role: 'Customer',
         };
 
-        await AddUser(user);
+        const errors = await validateNewUser(user);
+
+        if (errors.length > 0) {
+            return res.status(httpStatus.UNPROCESSABLE_ENTITY).send({ errors });
+        }
+
+        user.Password = await cryptoHelper.hash(password);
+
+        await addUser(user);
 
         return res.status(httpStatus.CREATED).send();
     } catch (e) {

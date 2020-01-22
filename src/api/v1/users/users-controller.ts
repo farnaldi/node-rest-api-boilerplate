@@ -2,14 +2,14 @@
 import { Request, Response } from 'express';
 import * as httpStatus from 'http-status';
 import { getUserDTO } from './users-dtos';
-import { FindUserById } from '../../../database/users/user-functions';
+import { findUserById } from '../../../database/users/user-functions';
 import { INTERNAL_SERVER_ERROR } from '../../../constants/error-constants';
 
 const me = async (req: Request, res: Response): Promise<any> => {
     const userId = res.locals.jwtPayload.sub;
 
     try {
-        const user = await FindUserById(userId);
+        const user = await findUserById(userId);
 
         return res.status(httpStatus.OK).send(getUserDTO(user));
     } catch (e) {

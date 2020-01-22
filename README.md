@@ -30,9 +30,13 @@ This project uses node and npm. Go check them out if you don't have them locally
 
 - Authentication & Authorization with [JSON Web Tokens](https://jwt.io/) using [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 
-- [Morgan](https://github.com/expressjs/morgan) for logging request
+- The request are logged with [Morgan](https://github.com/expressjs/morgan)
 
-- [Helmet](https://helmetjs.github.io/) to improve the security
+- [Helmet](https://helmetjs.github.io/) used to improve the security
+
+- [Jest](https://jestjs.io/) used for test & test coverage
+
+- [Sinon](https://sinonjs.org/) used to mock functions responses
 
 - Versioned routes
 
