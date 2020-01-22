@@ -60,13 +60,14 @@ This project uses node and npm. Go check them out if you don't have them locally
 
 ## Available scripts
 
-- `build` - Transpile TypeScript to ES6,
+- `test` - Run the unit tests
+- `build` - Transpile TypeScript to ES6
 - `lint` - Lint your TS code,
 - `dev` - Run the app without transpile to ES6
 - `start` - Run the transpiled app
 - `knex:migrate:make` - Create a new migration, it needs the migration name as parameter
 - `knex:migrate:latest` - Apply the latest migrations to the database
-- `knex:migrate:rollback` - Rollback the latest migration applied.
+- `knex:migrate:rollback` - Rollback the latest migration applied
 
 ## Contributing
 
