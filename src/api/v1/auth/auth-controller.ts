@@ -13,6 +13,7 @@ import logError from '../../../handlers/log-handler';
 import { createToken } from '../../../helpers/jwt-helper';
 
 import { validateNewUser } from '../../../handlers/users-handler';
+import roles from '../../../constants/roles-contants';
 
 export const login = async (req: Request, res: Response): Promise<any> => {
     const { email, password } = req.body;
@@ -61,6 +62,7 @@ export const register = async (req: Request, res: Response): Promise<any> => {
         }
 
         user.password = await cryptoHelper.hash(password);
+        user.role = roles.Customer;
 
         await addUser(user);
 
