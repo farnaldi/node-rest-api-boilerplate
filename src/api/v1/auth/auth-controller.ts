@@ -2,8 +2,6 @@
 import { Request, Response } from 'express';
 import * as httpStatus from 'http-status';
 import { UNAUTHORIZED, INTERNAL_SERVER_ERROR } from '../../../constants/error-constants';
-// eslint-disable-next-line no-unused-vars
-import { ErrorDetail } from '../../../types/error-types';
 import { findUserByEmail, addUser } from '../../../database/users/user-functions';
 
 import * as cryptoHelper from '../../../helpers/crypto-helper';
@@ -25,7 +23,7 @@ export const login = async (req: Request, res: Response): Promise<any> => {
         const user = await findUserByEmail(email);
 
         if (user) {
-            matchPasswords = await cryptoHelper.compare(password, user.Password);
+            matchPasswords = await cryptoHelper.compare(password, user.password);
         }
 
         if (!user || !matchPasswords) {
@@ -33,10 +31,10 @@ export const login = async (req: Request, res: Response): Promise<any> => {
         }
 
         const tokenPayload: JwtPayload = {
-            sub: user.Id,
-            name: user.FirstName,
-            email: user.Email,
-            role: user.Role,
+            sub: user.id,
+            name: user.firstName,
+            email: user.email,
+            role: user.role,
         };
 
         const token = createToken(tokenPayload);
@@ -51,14 +49,10 @@ export const login = async (req: Request, res: Response): Promise<any> => {
 };
 
 export const register = async (req: Request, res: Response): Promise<any> => {
-    const { firstName, lastName, email, password } = req.body;
     try {
-        const user: Partial<UserModel> = {
-            FirstName: firstName,
-            LastName: lastName,
-            Email: email,
-            Role: 'Customer',
-        };
+        const { password } = req.body;
+
+        const user: UserModel = UserModel.fromJson(req.body);
 
         const errors = await validateNewUser(user);
 
@@ -66,7 +60,7 @@ export const register = async (req: Request, res: Response): Promise<any> => {
             return res.status(httpStatus.UNPROCESSABLE_ENTITY).send({ errors });
         }
 
-        user.Password = await cryptoHelper.hash(password);
+        user.password = await cryptoHelper.hash(password);
 
         await addUser(user);
 

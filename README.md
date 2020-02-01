@@ -54,9 +54,11 @@ This project uses node and npm. Go check them out if you don't have them locally
 
 | Method   | Resource               | Description                                                                                                                                 |
 | :------- | :----------------------| :------------------------------------------------------------------------------------------------------------------------------------------ |
-| `POST`   | `/v1/auth/register`    | Create a new user in the DB. You need to specify in the body the following attributes: firstName, lastName, email & password.               |
-| `POST`   | `/v1/auth/login`       | Sign in with the email & password. If it's successful, then generates a token                                                               |
+| `POST`   | `/v1/auth/register`    | Create a new user in the DB. You need to specify in the body the following attributes: firstName, lastName, email & password.
+| `POST`   | `/v1/auth/login`       | Sign in with the email & password. If it's successful, then generates a token
 | `GET`    | `/v1/users/me`         | Returns the authenticated user
+| `PATCH`  | `/v1/users/:id`         | Update a user in the DB. You need to specify in the body at least one of the following attributes: firstName, lastName, email or password.
+
 
 ## Available scripts
 
