@@ -1,33 +1,35 @@
-import { Model } from 'objection';
+import * as objection from 'objection';
 
-export class UserModel extends Model {
+export class UserModel extends objection.Model {
     static get tableName() {
         return `users`;
     }
 
     static get idColumn() {
-        return `Id`;
+        return `id`;
     }
 
-    Id: number;
+    $beforeUpdate() {
+        this.updatedAt = new Date();
+    }
 
-    FirstName: string;
+    id?: number;
 
-    LastName: string;
+    firstName?: string;
 
-    Email: string;
+    lastName?: string;
 
-    Role: string;
+    email?: string;
 
-    Password: string;
+    role?: string;
 
-    /*
-    CreatedAt: Date;
+    password?: string;
 
-    UpdatedAt: Date;
+    createdAt?: Date;
 
-    DeletedAt: Date;
-    */
+    updatedAt?: Date;
+
+    deletedAt?: Date;
 }
 
 export default UserModel;

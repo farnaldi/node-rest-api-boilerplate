@@ -1,3 +1,3 @@
-export const DATE_FORMAT = '';
-export const DATETIME_FORMAT = '';
-export const TIME_FORMAT = '';
+export const DATE_FORMAT = 'YYYY-MM-DD';
+export const DATETIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';
+export const TIME_FORMAT = 'HH:mm:ss';
