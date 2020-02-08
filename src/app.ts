@@ -7,8 +7,8 @@ import * as compression from 'compression';
 
 import { ALLOWED_ORIGINS } from './config/env';
 
-import { healthCheck, notFound } from './api';
 import routerV1 from './api/v1';
+import { healthCheck, notFoundDefault } from './helpers/response-helper';
 
 const corsOptions = {
     origin: (origin, callback) => {
@@ -51,7 +51,7 @@ const initApp = (): express.Application => {
 
     app.use('/v1', routerV1);
 
-    app.use(notFound);
+    app.use(notFoundDefault);
 
     return app;
 };
