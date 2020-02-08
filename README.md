@@ -9,7 +9,7 @@ This is a boilerplate for building scalable and robust REST APIs using Node & Ty
 - [Installation](#installation)
 - [Available Routes](#available-routes)
 - [Available Scripts](#available-scripts)
-- [Contributing] (#contributing)
+- [Contributing](#contributing)
 - [License](#license)
 
 ## Prerequisites
