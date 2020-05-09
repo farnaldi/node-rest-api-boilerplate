@@ -14,7 +14,7 @@ const validateBody = (schema: Joi.ObjectSchema) => {
             next();
         } else {
             const { details } = error;
-            const errorDetails = details.map(i => parseError(i.path[0] as string, i.message));
+            const errorDetails = details.map((i) => parseError(i.path[0] as string, i.message));
 
             unprocessableEntity(res, errorDetails);
         }
