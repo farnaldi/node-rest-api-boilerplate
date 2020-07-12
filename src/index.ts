@@ -8,7 +8,7 @@ connectDatabase()
 
         const port = API_PORT;
 
-        app.listen(port, err => {
+        app.listen(port, (err) => {
             if (err) {
                 // eslint-disable-next-line no-console
                 return console.error(err);
@@ -17,7 +17,7 @@ connectDatabase()
             return console.log(`server is listening on ${port}`);
         });
     })
-    .catch(e => {
+    .catch((e) => {
         // eslint-disable-next-line no-console
         console.error(`Something went wrong connecting database:${e.message}`);
     });
