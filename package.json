@@ -61,7 +61,7 @@
     "moment-timezone": "^0.5.31",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "objection": "^2.2.1"
+    "objection": "^2.2.3"
   },
   "jest": {
     "collectCoverage": true
