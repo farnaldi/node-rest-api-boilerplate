@@ -56,7 +56,7 @@
     "helmet": "^4.1.1",
     "http-status": "^1.4.1",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.21.6",
+    "knex": "^0.21.12",
     "lodash.pick": "^4.4.0",
     "moment-timezone": "^0.5.31",
     "morgan": "^1.10.0",
