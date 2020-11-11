@@ -1,4 +1,3 @@
-import pick from 'lodash.pick';
 // eslint-disable-next-line no-unused-vars
 import UserModel from '../../../database/users/user-model';
 
@@ -10,4 +9,14 @@ export interface UserDTO {
     role: string;
 }
 
-export const getUserDTO = (user: UserModel): UserDTO => pick(user, ['id', 'firstName', 'lastName', 'email', 'role']);
+export const getUserDTO = (user: UserModel): UserDTO => {
+    const { id, firstName, lastName, email, role } = user;
+
+    return {
+        id,
+        firstName,
+        lastName,
+        email,
+        role,
+    };
+};

@@ -8,11 +8,7 @@ connectDatabase()
 
         const port = API_PORT;
 
-        app.listen(port, (err) => {
-            if (err) {
-                // eslint-disable-next-line no-console
-                return console.error(err);
-            }
+        app.listen(port, () => {
             // eslint-disable-next-line no-console
             return console.log(`server is listening on ${port}`);
         });
