@@ -59,7 +59,7 @@
     "knex": "^0.21.12",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "objection": "^2.2.3"
+    "objection": "^2.2.7"
   },
   "jest": {
     "collectCoverage": true
